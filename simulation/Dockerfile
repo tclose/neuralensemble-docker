@@ -5,7 +5,7 @@
 FROM neuralensemble/base
 MAINTAINER andrew.davison@unic.cnrs-gif.fr
 
-ENV NEST_VER=2.12.0 NRN_VER=7.4
+ENV NEST_VER=2.14.0 NRN_VER=7.5
 ENV NEST=nest-$NEST_VER NRN=nrn-$NRN_VER
 ENV PATH=$PATH:$VENV/bin
 RUN ln -s /usr/bin/2to3-3.4 $VENV/bin/2to3
@@ -43,6 +43,7 @@ RUN mkdir $NRN; \
 
 RUN $VENV/bin/pip3 install lazyarray nrnutils PyNN
 RUN $VENV/bin/pip3 install brian2
+RUN $VENV/bin/pip3 install pype9
 
 WORKDIR /home/docker/
 RUN echo "source $VENV/bin/activate" >> .bashrc

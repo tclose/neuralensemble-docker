@@ -19,3 +19,6 @@ RUN /usr/bin/ssh-keygen -q -t rsa -N "" -f $KEYFILE; cat $KEYFILE.pub >> /home/d
 RUN echo "IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 RUN touch /home/docker/.Xauthority; chown docker /home/docker/.Xauthority
 CMD ["/usr/sbin/sshd", "-D"]
+
+USER docker
+RUN $VENV/bin/pip3 install matplotlib
